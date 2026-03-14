@@ -769,6 +769,9 @@ strong {
 
 .impact-strip--compact .impact-card {
   padding: 22px 22px 20px;
+  display: grid;
+  align-content: start;
+  gap: 12px;
   border-radius: 24px;
   border: 1px solid rgba(33, 41, 59, 0.1);
   background:
@@ -780,20 +783,42 @@ strong {
 
 .impact-strip--compact .impact-value {
   font-size: clamp(2rem, 4vw, 3.1rem);
-  line-height: 0.9;
-  margin-bottom: 10px;
+  line-height: 0.98;
+  margin: 0;
 }
 
 .impact-strip--compact .impact-card h3 {
-  margin: 0 0 8px;
+  margin: 0;
   font-size: 1.35rem;
-  line-height: 1.1;
+  line-height: 1.18;
 }
 
 .impact-strip--compact .impact-card p {
   max-width: 24ch;
   margin: 0;
+  line-height: 1.5;
   color: rgba(255, 255, 255, 0.84);
+}
+
+html[lang="hi"] .impact-strip--compact .impact-card,
+html[lang="gu"] .impact-strip--compact .impact-card {
+  gap: 14px;
+}
+
+html[lang="hi"] .impact-strip--compact .impact-value,
+html[lang="gu"] .impact-strip--compact .impact-value {
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+html[lang="hi"] .impact-strip--compact .impact-card h3,
+html[lang="gu"] .impact-strip--compact .impact-card h3 {
+  line-height: 1.24;
+}
+
+html[lang="hi"] .impact-strip--compact .impact-card p,
+html[lang="gu"] .impact-strip--compact .impact-card p {
+  line-height: 1.62;
 }
 
 .impact-card {
