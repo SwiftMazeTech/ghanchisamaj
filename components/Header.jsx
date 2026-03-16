@@ -36,12 +36,12 @@ export default function Header() {
         <span className="announcement__meta">{siteContent.establishedLabel}</span>
         <div className="announcement__contact">
           {phoneNumbers.map((item) => (
-            <a key={item} href={`tel:${sanitizePhone(item)}`}>
+            <a key={item} href={`tel:${sanitizePhone(item)}`} className="announcement__phone">
               {item}
             </a>
           ))}
           {siteContent.contact.emails.map((email) => (
-            <a key={email} href={`mailto:${email}`}>
+            <a key={email} href={`mailto:${email}`} className="announcement__email">
               {email}
             </a>
           ))}
