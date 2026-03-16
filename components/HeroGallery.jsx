@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
+import ZoomableImageModal from "./ZoomableImageModal";
 
 export default function HeroGallery({ items, donationPhoto }) {
   const [index, setIndex] = useState(0);
@@ -94,32 +95,16 @@ export default function HeroGallery({ items, donationPhoto }) {
       </div>
 
       {showDonationModal && donationPhoto ? (
-        <div className="gallery-modal" role="dialog" aria-modal="true" aria-label={donationPhoto.title}>
-          <button
-            type="button"
-            className="gallery-modal__backdrop"
-            aria-label={ui.closeImage}
-            onClick={() => setShowDonationModal(false)}
-          />
-          <div className="gallery-modal__dialog">
-            <button
-              type="button"
-              className="gallery-modal__close"
-              aria-label={ui.closeImage}
-              onClick={() => setShowDonationModal(false)}
-            >
-              x
-            </button>
-            <div className="gallery-modal__media">
-              <Image src={donationPhoto.image} alt={donationPhoto.title} fill sizes="90vw" className="gallery-modal__image" />
-            </div>
-            <div className="gallery-modal__caption">
-              <p className="eyebrow">{ui.donationEyebrow}</p>
-              <h2>{donationPhoto.title}</h2>
-              <p>{donationPhoto.description}</p>
-            </div>
-          </div>
-        </div>
+        <ZoomableImageModal
+          title={donationPhoto.title}
+          image={donationPhoto.image}
+          alt={donationPhoto.title}
+          onClose={() => setShowDonationModal(false)}
+          ui={ui}
+          captionEyebrow={ui.donationEyebrow}
+          captionTitle={donationPhoto.title}
+          captionDescription={donationPhoto.description}
+        />
       ) : null}
     </>
   );

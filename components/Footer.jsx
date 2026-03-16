@@ -4,9 +4,48 @@ import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "./LanguageProvider";
 
+function sanitizePhone(value) {
+  return value.replace(/[^\d+]/g, "");
+}
+
+function PhoneIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="m7.2 4.6 2 2.1-.9 1.8c-.2.4-.2.8 0 1.2.8 1.6 2 2.8 3.6 3.6.4.2.8.2 1.2 0l1.8-.9 2.1 2c.5.5.5 1.3 0 1.8l-1.3 1.3c-.6.6-1.5.8-2.3.5-2.7-.9-5.1-2.6-7-4.5-1.9-1.9-3.6-4.3-4.5-7-.3-.8-.1-1.7.5-2.3l1.3-1.3c.5-.5 1.3-.5 1.8 0Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3.5" y="5.5" width="17" height="13" rx="3" fill="none" stroke="currentColor" strokeWidth="1.8" />
+      <path
+        d="m5.8 8 6.2 4.8L18.2 8"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
 export default function Footer() {
   const { siteContent } = useLanguage();
   const { ui } = siteContent;
+  const { address, phone, secondaryPhone, emails, officeName } = siteContent.contact;
+  const mapQuery = encodeURIComponent(`${officeName}, ${address}`);
+  const mapHref = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+  const creditMatch = ui.footer.credit.match(/^(.*?)(\s*\(\+91[^)]+\))$/);
 
   return (
     <footer className="site-footer">
@@ -31,15 +70,45 @@ export default function Footer() {
         </div>
         <div className="footer-panel footer-panel--contact">
           <p className="footer-kicker">{ui.footer.contactKicker}</p>
-          <p>{siteContent.contact.address}</p>
-          <p>{siteContent.contact.phone}</p>
-          {siteContent.contact.secondaryPhone ? <p>{siteContent.contact.secondaryPhone}</p> : null}
-          <p>{siteContent.contact.emails.join(" / ")}</p>
+          <a href={mapHref} target="_blank" rel="noreferrer">
+            {address}
+          </a>
+          <a href={`tel:${sanitizePhone(phone)}`} className="footer-contact-item">
+            <span className="footer-contact-item__icon">
+              <PhoneIcon />
+            </span>
+            <span>{phone}</span>
+          </a>
+          {secondaryPhone ? (
+            <a href={`tel:${sanitizePhone(secondaryPhone)}`} className="footer-contact-item">
+              <span className="footer-contact-item__icon">
+                <PhoneIcon />
+              </span>
+              <span>{secondaryPhone}</span>
+            </a>
+          ) : null}
+          {emails.map((email) => (
+            <a key={email} href={`mailto:${email}`} className="footer-contact-item">
+              <span className="footer-contact-item__icon">
+                <MailIcon />
+              </span>
+              <span>{email}</span>
+            </a>
+          ))}
         </div>
       </div>
       <div className="footer-bottom">
-        <span>&copy; 2026 {siteContent.orgName}</span>
-        <span>{ui.footer.credit}</span>
+        <span>&copy; 2026 {siteContent.orgName}. All rights reserved</span>
+        <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit">
+          {creditMatch ? (
+            <>
+              <span className="footer-credit__label">{creditMatch[1].trim()}</span>
+              <span className="footer-credit__phone">{creditMatch[2].trim()}</span>
+            </>
+          ) : (
+            ui.footer.credit
+          )}
+        </Link>
       </div>
     </footer>
   );

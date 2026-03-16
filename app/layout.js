@@ -9,9 +9,9 @@ export const metadata = {
   title: defaultSiteContent.orgName,
   description: defaultSiteContent.shortIntro,
   icons: {
-    icon: "/favicon-clean.png?v=2",
-    shortcut: "/favicon-clean.png?v=2",
-    apple: "/favicon-clean.png?v=2",
+    icon: "/favicon-clean.png?v=3",
+    shortcut: "/favicon-clean.png?v=3",
+    apple: "/favicon-clean.png?v=3",
   },
 };
 

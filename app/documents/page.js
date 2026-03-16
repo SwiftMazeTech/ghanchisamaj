@@ -27,12 +27,12 @@ export default function DocumentsPage() {
         {siteContent.documents.map((item, index) => (
           <article key={item.title} className="doc-card">
             <span className="doc-number">{String(index + 1).padStart(2, "0")}</span>
-            <div>
+            <div className="doc-copy">
               <h2>{item.title}</h2>
               <p>{item.description}</p>
               <p>{item.summary}</p>
             </div>
-            <div className="hero-actions">
+            <div className="doc-actions">
               <a href={item.href} target="_blank" rel="noreferrer" className="doc-link">
                 {ui.previewPdf}
               </a>

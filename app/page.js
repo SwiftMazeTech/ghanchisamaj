@@ -157,7 +157,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="surface-section">
+      <section className="surface-section surface-section--home-last">
         <SectionHeading
           eyebrow={siteContent.ui.home.participationEyebrow}
           title={siteContent.ui.home.participationTitle}

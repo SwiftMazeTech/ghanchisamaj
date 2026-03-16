@@ -5,6 +5,7 @@
 /.next
 /out
 .next/
+.next-dev/
 .next-build/
 # production
 /build

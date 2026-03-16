@@ -41,7 +41,7 @@ export const shared = {
     officeName: "Modasa Samast Muslim Ghanchi Samaj",
     address: "First Floor, Sukun Complex, Dugharwada Road, Modasa, Dist. Aravalli, Gujarat 383315",
     phone: "+91 9499797028",
-    secondaryPhone: null,
+    secondaryPhone: "+91 81538 00879",
     emails: ["smgs.modasa@gmail.com", "skillmodasa@gmail.com"],
     whatsapp: "919499797028",
     chiefFunctionary: "Mr. Suleman A. Khanji",

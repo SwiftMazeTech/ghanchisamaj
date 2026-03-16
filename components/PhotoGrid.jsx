@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useLanguage } from "./LanguageProvider";
+import ZoomableImageModal from "./ZoomableImageModal";
 
 function PhotoCard({ item, index }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -40,12 +41,10 @@ function PhotoCard({ item, index }) {
 
     if (showModal) {
       window.addEventListener("keydown", onKeyDown);
-      document.body.style.overflow = "hidden";
     }
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
-      document.body.style.overflow = "";
     };
   }, [hasMultipleImages, item.images.length, showModal]);
 
@@ -86,38 +85,18 @@ function PhotoCard({ item, index }) {
       </article>
 
       {showModal ? (
-        <div className="gallery-modal" role="dialog" aria-modal="true" aria-label={item.title}>
-          <button
-            type="button"
-            className="gallery-modal__backdrop"
-            aria-label={ui.closeGallery}
-            onClick={() => setShowModal(false)}
-          />
-          <div className="gallery-modal__dialog">
-            <button
-              type="button"
-              className="gallery-modal__close"
-              aria-label={ui.closeGallery}
-              onClick={() => setShowModal(false)}
-            >
-              x
-            </button>
-            <div className="gallery-modal__media">
-              <Image
-                src={item.images[activeIndex]}
-                alt={`${item.title} ${activeIndex + 1}`}
-                fill
-                sizes="90vw"
-                className="gallery-modal__image"
-              />
-            </div>
-            <div className="gallery-modal__caption">
-              <p className="eyebrow">{ui.galleryEyebrow}</p>
-              <h2>{item.title}</h2>
-              <p>{item.description}</p>
-              {hasMultipleImages ? <span>{ui.imageCountLabel(activeIndex + 1, item.images.length)}</span> : null}
-            </div>
-            {hasMultipleImages ? (
+        <ZoomableImageModal
+          title={item.title}
+          image={item.images[activeIndex]}
+          alt={`${item.title} ${activeIndex + 1}`}
+          onClose={() => setShowModal(false)}
+          ui={{ ...ui, closeImage: ui.closeGallery }}
+          headerMeta={hasMultipleImages ? ui.imageCountLabel(activeIndex + 1, item.images.length) : null}
+          captionEyebrow={ui.galleryEyebrow}
+          captionTitle={item.title}
+          captionDescription={item.description}
+          footer={
+            hasMultipleImages ? (
               <div className="gallery-modal__controls">
                 <button type="button" className="gallery-modal__arrow" onClick={showPrevious} aria-label={ui.previousImage}>
                   {"<"}
@@ -137,9 +116,9 @@ function PhotoCard({ item, index }) {
                   {">"}
                 </button>
               </div>
-            ) : null}
-          </div>
-        </div>
+            ) : null
+          }
+        />
       ) : null}
     </>
   );
