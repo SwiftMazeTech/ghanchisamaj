@@ -1988,6 +1988,11 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
     display: block;
   }
 
+  .nav-language-switcher .language-switcher__menu {
+    top: auto;
+    bottom: calc(100% + 10px);
+  }
+
   .main-nav__close {
     width: 42px;
     height: 42px;
