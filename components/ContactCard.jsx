@@ -6,29 +6,14 @@ function AddressIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
       <path
-        d="M12 18.6s5.2-4.6 5.2-8.8a5.2 5.2 0 1 0-10.4 0c0 4.2 5.2 8.8 5.2 8.8Z"
+        d="M12 20.2s-5.2-5.1-5.2-9.3A5.2 5.2 0 1 1 17.2 11c0 4.1-5.2 9.2-5.2 9.2Z"
         fill="none"
         stroke="currentColor"
         strokeWidth="1.8"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
-      <path
-        d="M9.9 9.8a2.1 2.1 0 1 0 4.2 0 2.1 2.1 0 0 0-4.2 0Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path
-        d="M6 18.1 3.8 19v-7.3l2.8-1.1L12 12.8l5.4-2.2 2.8 1.1V19l-2.2-.9L12 20.4 6 18.1Z"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
+      <circle cx="12" cy="10.4" r="1.9" fill="none" stroke="currentColor" strokeWidth="1.8" />
     </svg>
   );
 }

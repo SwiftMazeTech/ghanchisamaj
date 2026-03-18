@@ -1883,24 +1883,34 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
   font-size: 0.92rem;
 }
 
-.footer-bottom a {
+.footer-bottom a,
+.footer-credit__prefix {
   color: rgba(255, 255, 255, 0.92);
-  text-decoration: none;
 }
 
 .footer-credit {
   display: inline-flex;
   align-items: baseline;
   justify-content: flex-end;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.footer-credit__link {
+  display: inline-flex;
+  align-items: baseline;
   gap: 0.28rem;
   flex-wrap: wrap;
+  color: rgba(255, 255, 255, 0.92);
+  text-decoration: none;
 }
 
 .footer-credit__phone {
   white-space: nowrap;
 }
 
-.footer-bottom a:hover {
+.footer-bottom a:hover,
+.footer-credit__link:hover {
   text-decoration: underline;
 }
 
@@ -2390,6 +2400,12 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
   }
 
   .footer-credit {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.08rem;
+  }
+
+  .footer-credit__link {
     flex-direction: column;
     align-items: center;
     gap: 0.08rem;

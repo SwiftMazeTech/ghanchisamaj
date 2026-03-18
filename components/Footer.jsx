@@ -23,6 +23,22 @@ function PhoneIcon() {
   );
 }
 
+function LocationIcon() {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        d="M12 20.2s-5.2-5.1-5.2-9.3A5.2 5.2 0 1 1 17.2 11c0 4.1-5.2 9.2-5.2 9.2Z"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <circle cx="12" cy="10.4" r="1.9" fill="none" stroke="currentColor" strokeWidth="1.8" />
+    </svg>
+  );
+}
+
 function MailIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -70,8 +86,11 @@ export default function Footer() {
         </div>
         <div className="footer-panel footer-panel--contact">
           <p className="footer-kicker">{ui.footer.contactKicker}</p>
-          <a href={mapHref} target="_blank" rel="noreferrer">
-            {address}
+          <a href={mapHref} target="_blank" rel="noreferrer" className="footer-contact-item footer-contact-item--address">
+            <span className="footer-contact-item__icon">
+              <LocationIcon />
+            </span>
+            <span>{address}</span>
           </a>
           <a href={`tel:${sanitizePhone(phone)}`} className="footer-contact-item">
             <span className="footer-contact-item__icon">
@@ -99,16 +118,21 @@ export default function Footer() {
       </div>
       <div className="footer-bottom">
         <span>&copy; 2026 {siteContent.orgName}. All rights reserved</span>
-        <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit">
-          {creditMatch ? (
-            <>
-              <span className="footer-credit__label">{creditMatch[1].trim()}</span>
+        {creditMatch ? (
+          <span className="footer-credit">
+            <span className="footer-credit__prefix">Designed &amp; Developed by</span>
+            <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit__link">
+              <span className="footer-credit__label">
+                {creditMatch[1].replace(/^Designed\s*&\s*Developed\s*by\s*/i, "").trim()}
+              </span>
               <span className="footer-credit__phone">{creditMatch[2].trim()}</span>
-            </>
-          ) : (
-            ui.footer.credit
-          )}
-        </Link>
+            </Link>
+          </span>
+        ) : (
+          <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit__link">
+            {ui.footer.credit}
+          </Link>
+        )}
       </div>
     </footer>
   );
