@@ -2084,7 +2084,7 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
   }
 
   .site-header {
-    --announcement-offset: 46px;
+    --announcement-offset: 68px;
   }
 
   .page-shell,
@@ -2156,6 +2156,42 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
     width: 100%;
     padding: 11px 12px;
     text-align: left;
+  }
+
+  .announcement {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    line-height: 1.35;
+  }
+
+  .announcement__meta,
+  .announcement__contact {
+    width: 100%;
+    text-align: center;
+  }
+
+  .announcement__contact {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: center;
+    gap: 10px;
+  }
+
+  .announcement__phone:first-child {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .announcement__phone:last-of-type {
+    justify-self: end;
+    text-align: right;
+  }
+
+  .announcement__email {
+    display: none;
   }
 
   .floating-whatsapp {
@@ -2362,33 +2398,12 @@ html[lang="gu"] .impact-strip--compact .impact-card > p:last-child {
 
 @media (max-width: 460px) {
   .site-header {
-    --announcement-offset: 46px;
-  }
-
-  .announcement {
-    display: grid;
-    justify-items: center;
-    gap: 4px;
-    padding: 8px 12px;
-    font-size: 0.76rem;
-    line-height: 1.35;
-  }
-
-  .announcement__meta,
-  .announcement__contact {
-    width: 100%;
-    justify-content: center;
-    text-align: center;
+    --announcement-offset: 68px;
   }
 
   .announcement__contact {
-    gap: 12px;
-    flex-wrap: nowrap;
+    gap: 8px;
     font-size: 0.74rem;
-  }
-
-  .announcement__email {
-    display: none;
   }
 }
 

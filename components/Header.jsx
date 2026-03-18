@@ -17,7 +17,7 @@ export default function Header() {
   const { siteContent } = useLanguage();
   const { ui } = siteContent;
   const closeMenuLabel = ui.closeMenu || ui.closeGallery || "Close menu";
-  const phoneNumbers = [siteContent.contact.phone].filter(Boolean);
+  const phoneNumbers = [siteContent.contact.phone, siteContent.contact.secondaryPhone].filter(Boolean);
   const navItems = [...siteContent.nav];
   const galleryIndex = navItems.findIndex((item) => item.href === "/gallery");
 
