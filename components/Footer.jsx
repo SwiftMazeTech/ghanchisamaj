@@ -117,7 +117,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>&copy; 2026 {siteContent.orgName}. All rights reserved</span>
+        <span>&copy; 2026 {siteContent.orgName}. All rights reserved.</span>
         {creditMatch ? (
           <span className="footer-credit">
             <span className="footer-credit__prefix">Designed &amp; Developed by</span>
