@@ -1,5 +1,6 @@
 "use client";
 
+import { formatDisplayPhone, sanitizePhone } from "../lib/phone";
 import { useLanguage } from "./LanguageProvider";
 
 function AddressIcon() {
@@ -64,10 +65,6 @@ function ChatIcon() {
   );
 }
 
-function sanitizePhone(value) {
-  return value.replace(/[^\d+]/g, "");
-}
-
 export default function ContactCard() {
   const { siteContent } = useLanguage();
   const { officeName, address, phone, secondaryPhone, emails, whatsapp, chiefFunctionary } = siteContent.contact;
@@ -89,7 +86,7 @@ export default function ContactCard() {
       key: "phone",
       label: ui.contact.phoneLabel || "Phone",
       icon: <PhoneIcon />,
-      items: phoneNumbers.map((item) => ({ label: item, href: `tel:${sanitizePhone(item)}` })),
+      items: phoneNumbers.map((item) => ({ label: formatDisplayPhone(item), href: `tel:${sanitizePhone(item)}` })),
     },
     {
       key: "email",
@@ -103,7 +100,7 @@ export default function ContactCard() {
             key: "whatsapp",
             label: ui.contact.whatsappLabel || "WhatsApp",
             icon: <ChatIcon />,
-            items: [{ label: `+${whatsapp}`, href: `https://wa.me/${whatsapp}`, external: true }],
+            items: [{ label: formatDisplayPhone(`+${whatsapp}`), href: `https://wa.me/${whatsapp}`, external: true }],
           },
         ]
       : []),

@@ -2,11 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { formatCreditPhone, formatDisplayPhone, sanitizePhone } from "../lib/phone";
 import { useLanguage } from "./LanguageProvider";
-
-function sanitizePhone(value) {
-  return value.replace(/[^\d+]/g, "");
-}
 
 function PhoneIcon() {
   return (
@@ -96,14 +93,14 @@ export default function Footer() {
             <span className="footer-contact-item__icon">
               <PhoneIcon />
             </span>
-            <span>{phone}</span>
+            <span>{formatDisplayPhone(phone)}</span>
           </a>
           {secondaryPhone ? (
             <a href={`tel:${sanitizePhone(secondaryPhone)}`} className="footer-contact-item">
               <span className="footer-contact-item__icon">
                 <PhoneIcon />
               </span>
-              <span>{secondaryPhone}</span>
+              <span>{formatDisplayPhone(secondaryPhone)}</span>
             </a>
           ) : null}
           {emails.map((email) => (
@@ -125,7 +122,7 @@ export default function Footer() {
               <span className="footer-credit__label">
                 {creditMatch[1].replace(/^Designed\s*&\s*Developed\s*by\s*/i, "").trim()}
               </span>
-              <span className="footer-credit__phone">{creditMatch[2].trim()}</span>
+              <span className="footer-credit__phone">{formatCreditPhone(creditMatch[2].trim())}</span>
             </Link>
           </span>
         ) : (

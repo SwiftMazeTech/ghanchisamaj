@@ -4,12 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { formatDisplayPhone, sanitizePhone } from "../lib/phone";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "./LanguageProvider";
-
-function sanitizePhone(value) {
-  return value.replace(/[^\d+]/g, "");
-}
 
 export default function Header() {
   const pathname = usePathname();
@@ -37,7 +34,7 @@ export default function Header() {
         <div className="announcement__contact">
           {phoneNumbers.map((item) => (
             <a key={item} href={`tel:${sanitizePhone(item)}`} className="announcement__phone">
-              {item}
+              {formatDisplayPhone(item)}
             </a>
           ))}
           {siteContent.contact.emails.map((email) => (
