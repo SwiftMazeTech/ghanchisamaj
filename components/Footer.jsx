@@ -118,7 +118,7 @@ export default function Footer() {
         {creditMatch ? (
           <span className="footer-credit">
             <span className="footer-credit__prefix">Designed &amp; Developed by</span>
-            <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit__link">
+            <Link href="https://www.swiftmazetech.com/" target="_blank" className="footer-credit__link">
               <span className="footer-credit__label">
                 {creditMatch[1].replace(/^Designed\s*&\s*Developed\s*by\s*/i, "").trim()}
               </span>
@@ -126,7 +126,7 @@ export default function Footer() {
             </Link>
           </span>
         ) : (
-          <Link href="https://www.swiftmazetech.com/" target="_blank" rel="noreferrer" className="footer-credit__link">
+          <Link href="https://www.swiftmazetech.com/" target="_blank" className="footer-credit__link">
             {ui.footer.credit}
           </Link>
         )}
